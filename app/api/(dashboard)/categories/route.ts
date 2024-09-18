@@ -73,7 +73,12 @@ export const POST = async (request: Request) => {
       title,
       user: new Types.ObjectId(userId),
     });
-    return new NextResponse(JSON.stringify());
+    return new NextResponse(
+      JSON.stringify(
+        JSON.stringify({ message: "Category Created", newCategory })
+      ),
+      { status: 200 }
+    );
   } catch (error: any) {
     return new NextResponse(
       "Error in createing  Categories : " + error.message,
